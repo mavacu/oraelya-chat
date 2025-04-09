@@ -1,1 +1,5 @@
-export default function Home() { return <div>Oraelya Chat</div>; }
+import ChatBox from '../components/ChatBox';
+
+export default function Home() {
+  return <ChatBox />;
+}
