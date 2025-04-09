@@ -29,10 +29,10 @@ export default function ChatBox() {
   return (
     <div className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-center px-4 py-10">
       <img
-        src="/oraelya-logo.png"
-        alt="Oraelya Logo"
-        className="w-48 md:w-64 mx-auto mb-6"
-      />
+  src="/oraelya-logo.png"
+  alt="Oraelya Logo"
+  className="w-32 md:w-40 mx-auto mb-4"
+/>
 
       <h1 className="text-4xl md:text-5xl font-oraelya mb-4 tracking-wide text-goldLight text-glow animate-fade-in">
         Oraelya AI Oracle
