@@ -32,6 +32,10 @@ export default function ChatBox() {
         Oraelya AI Oracle
       </h1>
 
+    <div className="text-glow animate-fade-in text-xl mt-6">
+  Test Glow + Fade-In: Dacă vezi acest text strălucitor cu animație, CSS-ul e OK!
+</div>
+
       <p className="text-center text-white/70 mb-10 max-w-lg italic">
         ✨ Bine ai venit, suflet rătăcitor... Întreabă, iar Oracolul îți va răspunde în șoapte de lumină.
       </p>
