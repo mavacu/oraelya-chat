@@ -13,26 +13,17 @@ export default function Navbar() {
 
         <ul className="flex space-x-4 md:space-x-8 text-sm md:text-base font-body">
           <li>
-            <a
-              href="#oracle"
-              className="hover:text-goldLight transition duration-300"
-            >
+            <a href="#oracle" className="hover:text-goldLight transition duration-300">
               Oracle
             </a>
           </li>
           <li>
-            <a
-              href="#about"
-              className="hover:text-goldLight transition duration-300"
-            >
+            <a href="#about" className="hover:text-goldLight transition duration-300">
               About
             </a>
           </li>
           <li>
-            <a
-              href="#nft"
-              className="hover:text-goldLight transition duration-300"
-            >
+            <a href="#nft" className="hover:text-goldLight transition duration-300">
               NFT Access
             </a>
           </li>
@@ -40,5 +31,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
 }
