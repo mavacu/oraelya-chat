@@ -28,7 +28,9 @@ export default function ChatBox() {
 
   return (
     <div className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-center px-4 py-10">
-      <h1 className="text-4xl md:text-5xl font-oraelya mb-4 tracking-wide text-goldLight text-glow">
+      <img src="/oraelya-logo.png" alt="Oraelya Logo" className="w-24 mb-4 animate-fade-in" />
+      
+      <h1 className="text-4xl md:text-5xl font-oraelya mb-4 tracking-wide text-goldLight text-glow animate-fade-in">
         Oraelya AI Oracle
       </h1>
 
@@ -56,7 +58,7 @@ export default function ChatBox() {
 
       {answer && (
         <div className="mt-8 max-w-2xl text-lg leading-relaxed text-white/90 animate-fade-in">
-          <strong className="text-goldLight">Oraelya răspunde:</strong>
+          <strong className="text-goldLight text-glow">Oraelya răspunde:</strong>
           <p className="mt-4 whitespace-pre-wrap">{answer}</p>
         </div>
       )}
