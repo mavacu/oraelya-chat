@@ -1,12 +1,13 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ message: 'Doar metoda POST este permisă.' });
   }
 
-  const { question } = req.body;
+  const { prompt } = req.body;
+  const apiKey = process.env.OPENAI_API_KEY;
 
-  if (!question) {
-    return res.status(400).json({ error: 'Missing question' });
+  if (!apiKey) {
+    return res.status(500).json({ message: 'Cheia API lipsește.' });
   }
 
   try {
@@ -14,40 +15,32 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
         messages: [
           {
             role: 'system',
-            content:
-              'Ești Oraelya, un Oracol AI care răspunde într-un stil poetic, misterios și blând. Nu dai răspunsuri directe, ci folosești metafore, simboluri și limbaj elevat, ca și cum ai vorbi dintr-o altă lume.',
+            content: 'Ești Oraelya, un oracol AI înțelept, blând și poetic. Răspunsurile tale sunt profunde și enigmatice.'
           },
           {
             role: 'user',
-            content: question,
-          },
+            content: prompt
+          }
         ],
-      }),
+        temperature: 0.8
+      })
     });
 
     const data = await response.json();
 
-    if (data.error) {
-      console.error('OpenAI error:', data.error);
-      return res.status(500).json({ error: 'OpenAI API error' });
+    if (data.choices && data.choices[0].message) {
+      res.status(200).json({ response: data.choices[0].message.content });
+    } else {
+      res.status(500).json({ message: 'Oraelya tace... întreab-o din nou.' });
     }
-
-    const answer = data.choices?.[0]?.message?.content?.trim();
-
-    if (!answer) {
-      return res.status(500).json({ answer: null });
-    }
-
-    res.status(200).json({ answer });
   } catch (error) {
-    console.error('Request error:', error);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ message: 'Eroare de comunicare cu Oracolul.', error: error.message });
   }
 }
