@@ -27,12 +27,15 @@ export default function ChatBox() {
   };
 
   return (
-    <div id="oracle" className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-center px-4 py-10">
+    <div
+      id="oracle"
+      className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-start px-4 py-10 sm:py-16 md:py-20"
+    >
       <img
-  src="/oraelya-logo.png"
-  alt="Oraelya Logo"
-  className="w-32 md:w-40 mx-auto mb-4"
-/>
+        src="/oraelya-logo.png"
+        alt="Oraelya Logo"
+        className="w-full max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-8 rounded-xl shadow-xl"
+      />
 
       <h1 className="text-4xl md:text-5xl font-oraelya mb-4 tracking-wide text-goldLight text-glow animate-fade-in">
         Oraelya AI Oracle
@@ -42,7 +45,10 @@ export default function ChatBox() {
         ✨ Welcome, wandering soul... Ask your question, and the Oracle shall whisper back in rays of light.
       </p>
 
-      <form onSubmit={askOraelya} className="w-full max-w-xl bg-white/10 backdrop-blur-md rounded-lg shadow-lg p-6 animate-fade-in">
+      <form
+        onSubmit={askOraelya}
+        className="w-full max-w-xl bg-white/10 backdrop-blur-md rounded-lg shadow-lg p-6 animate-fade-in"
+      >
         <input
           type="text"
           value={question}
