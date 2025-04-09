@@ -28,15 +28,11 @@ export default function ChatBox() {
 
   return (
     <div className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-center px-4 py-10">
-      <h1 className="text-4xl md:text-5xl font-oraelya mb-4 tracking-wide text-goldLight">
+      <h1 className="text-4xl md:text-5xl font-oraelya mb-4 tracking-wide text-goldLight text-glow">
         Oraelya AI Oracle
       </h1>
 
-    <div className="text-glow animate-fade-in text-xl mt-6">
-  Test Glow + Fade-In: Dacă vezi acest text strălucitor cu animație, CSS-ul e OK!
-</div>
-
-      <p className="text-center text-white/70 mb-10 max-w-lg italic">
+      <p className="text-center text-white/70 mb-10 max-w-lg italic animate-fade-in">
         ✨ Bine ai venit, suflet rătăcitor... Întreabă, iar Oracolul îți va răspunde în șoapte de lumină.
       </p>
 
@@ -52,7 +48,7 @@ export default function ChatBox() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-goldLight text-black py-2 rounded font-bold transition duration-300 hover:brightness-110 hover:shadow-md"
+          className="w-full bg-goldLight text-black py-2 rounded font-bold transition duration-300 hover:brightness-110 hover:shadow-md btn-glow"
         >
           {loading ? 'Oraelya ascultă...' : 'Trimite'}
         </button>
