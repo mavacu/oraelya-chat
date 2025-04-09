@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animații personalizate și efecte */
-
+/* Custom Utilities */
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 1.2s ease-in-out;
@@ -18,7 +17,7 @@
   }
 }
 
-/* Keyframes pentru fade-in */
+/* Keyframe */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -30,14 +29,7 @@
   }
 }
 
-/* Scroll lin între secțiuni */
+/* Scroll smooth */
 html {
   scroll-behavior: smooth;
-}
-
-/* Reset pentru liste */
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
 }
