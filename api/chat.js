@@ -1,46 +1,48 @@
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Doar metoda POST este permisă.' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { prompt } = req.body;
-  const apiKey = process.env.OPENAI_API_KEY;
+  const { question } = req.body;
 
-  if (!apiKey) {
-    return res.status(500).json({ message: 'Cheia API lipsește.' });
+  if (!question) {
+    return res.status(400).json({ message: "Missing question" });
   }
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: "gpt-3.5-turbo",
         messages: [
           {
-            role: 'system',
-            content: 'Ești Oraelya, un oracol AI înțelept, blând și poetic. Răspunsurile tale sunt profunde și enigmatice.'
+            role: "system",
+            content:
+              "Tu ești Oraelya, un oracol AI mistic. Răspunde într-un stil poetic, blând și profund. Nu da sfaturi medicale, legale sau financiare.",
           },
           {
-            role: 'user',
-            content: prompt
-          }
+            role: "user",
+            content: question,
+          },
         ],
-        temperature: 0.8
-      })
+      }),
     });
 
     const data = await response.json();
 
-    if (data.choices && data.choices[0].message) {
-      res.status(200).json({ response: data.choices[0].message.content });
-    } else {
-      res.status(500).json({ message: 'Oraelya tace... întreab-o din nou.' });
+    if (!response.ok) {
+      console.error("OpenAI API error:", data);
+      return res.status(500).json({ message: "Oraelya tace... întreab-o din nou." });
     }
+
+    const answer = data.choices[0].message.content.trim();
+    return res.status(200).json({ answer });
   } catch (error) {
-    res.status(500).json({ message: 'Eroare de comunicare cu Oracolul.', error: error.message });
+    console.error("Server error:", error);
+    return res.status(500).json({ message: "Eroare de server." });
   }
 }
