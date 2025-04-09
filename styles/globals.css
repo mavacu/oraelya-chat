@@ -27,6 +27,14 @@
   }
 }
 
+/* Scroll behavior for smooth navigation */
 html {
   scroll-behavior: smooth;
+}
+
+/* Remove default list bullets for ul in Navbar */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
