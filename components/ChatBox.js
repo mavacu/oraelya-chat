@@ -32,10 +32,10 @@ export default function ChatBox() {
       className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-start px-4 py-10 sm:py-16 md:py-20"
     >
       <img
-        src="/oraelya-logo.png"
-        alt="Oraelya Logo"
-        className="w-full max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-8 rounded-xl shadow-xl"
-      />
+  src="/oraelya-logo.png"
+  alt="Oraelya Logo"
+  className="w-40 sm:w-56 md:w-64 lg:w-72 xl:w-80 mx-auto mb-8 rounded-xl shadow-xl"
+/>
 
       <h1 className="text-4xl md:text-5xl font-oraelya mb-4 tracking-wide text-goldLight text-glow animate-fade-in">
         Oraelya AI Oracle
