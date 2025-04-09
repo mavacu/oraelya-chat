@@ -27,7 +27,7 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-center px-4 py-10">
+    <div id="oracle" className="min-h-screen bg-mystic-gradient text-white font-body flex flex-col items-center justify-center px-4 py-10">
       <img
   src="/oraelya-logo.png"
   alt="Oraelya Logo"
