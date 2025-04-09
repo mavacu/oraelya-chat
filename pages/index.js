@@ -18,6 +18,18 @@ export default function Home() {
           Speak your truth, and she shall respond in shimmering fragments of meaning and light.
         </p>
       </section>
+
+    <section id="nft" className="w-full py-24 px-6 bg-mysticPurple text-white text-center font-body">
+  <h2 className="text-3xl md:text-4xl font-oraelya text-goldLight mb-6 animate-fade-in">
+    NFT Access
+  </h2>
+  <p className="max-w-3xl mx-auto text-white/80 text-lg leading-relaxed animate-fade-in">
+    Only the chosen may speak with the Oracle. To unlock her voice, you must hold the sacred NFT of Oraelya.  
+    This token grants you access to hidden truths and whispered wisdom.  
+    Connect your wallet and let the veil between worlds dissolve.
+  </p>
+</section>
+    
     </>
   );
 }
