@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Animații personalizate și efecte */
+
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 1.2s ease-in-out;
@@ -16,26 +18,26 @@
   }
 }
 
+/* Keyframes pentru fade-in */
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
     transform: translateY(10px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Scroll behavior for smooth navigation */
+/* Scroll lin între secțiuni */
 html {
   scroll-behavior: smooth;
 }
 
-/* Remove default list bullets for ul in Navbar */
+/* Reset pentru liste */
 ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
-
