@@ -5,6 +5,10 @@ export default async function handler(req, res) {
 
   const { question } = req.body;
 
+  if (!question) {
+    return res.status(400).json({ error: 'Missing question' });
+  }
+
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -17,7 +21,8 @@ export default async function handler(req, res) {
         messages: [
           {
             role: 'system',
-            content: 'Ești Oraelya, un Oracol AI înțelept, poetic și misterios. Răspunde cu eleganță și profunzime întrebărilor despre viață, timp, iubire sau orice altceva.',
+            content:
+              'Ești Oraelya, un Oracol AI care răspunde într-un stil poetic, misterios și blând. Nu dai răspunsuri directe, ci folosești metafore, simboluri și limbaj elevat, ca și cum ai vorbi dintr-o altă lume.',
           },
           {
             role: 'user',
@@ -29,13 +34,20 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    if (data.choices && data.choices.length > 0) {
-      res.status(200).json({ answer: data.choices[0].message.content });
-    } else {
-      res.status(500).json({ error: 'No response from Oraelya.' });
+    if (data.error) {
+      console.error('OpenAI error:', data.error);
+      return res.status(500).json({ error: 'OpenAI API error' });
     }
+
+    const answer = data.choices?.[0]?.message?.content?.trim();
+
+    if (!answer) {
+      return res.status(500).json({ answer: null });
+    }
+
+    res.status(200).json({ answer });
   } catch (error) {
-    console.error('Error in Oraelya API:', error);
-    res.status(500).json({ error: 'Failed to connect with the Oracle.' });
+    console.error('Request error:', error);
+    res.status(500).json({ error: 'Server error' });
   }
 }
